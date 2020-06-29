@@ -88,15 +88,11 @@ public final class TaskList implements Runnable {
 
     private void add(String commandLine) {
         String[] subcommandRest = commandLine.split(" ", 2);
-
         String subcommand = subcommandRest[0];
         if (subcommand.equals("project")) {
-            System.out.println(subcommandRest[1]);
             project.setName(subcommandRest[1]);
             addProject(project);
-            //addProject(subcommandRest[1]);
         } else if (subcommand.equals("task")) {
-            System.out.println(subcommandRest[1]);
             String[] projectTask = subcommandRest[1].split(" ", 2);
             project.addTask(projectTask[1]);
         }
@@ -104,9 +100,7 @@ public final class TaskList implements Runnable {
 
     private void addProject(Project project) {
         projects.add(project);
-        //tasks.put(name, new ArrayList<Task>());
     }
-
 
 
     private void check(String idString) {
