@@ -6,9 +6,8 @@ public class Project {
     private String name;
     private List<Task> tasks;
 
-    public Project(String name, List<Task> tasks) {
+    public Project(String name) {
         this.name = name;
-        this.tasks = tasks;
     }
 
     public String getName() {
