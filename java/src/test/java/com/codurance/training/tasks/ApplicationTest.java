@@ -99,6 +99,11 @@ public final class ApplicationTest {
         execute("quit");
     }
 
+    @Test(timeout = 1000) public void
+    add_task_works() throws IOException {
+
+    }
+
     private void execute(String command) throws IOException {
         read(PROMPT);
         write(command);
