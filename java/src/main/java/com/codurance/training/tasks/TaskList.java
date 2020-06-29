@@ -13,6 +13,8 @@ public final class TaskList implements Runnable {
     private static final String QUIT = "quit";
 
     private final Map<String, List<Task>> tasks = new LinkedHashMap<>();
+    private final ArrayList<Project> projects = new ArrayList<Project>();
+
     private final BufferedReader in;
     private final PrintWriter out;
 
@@ -85,6 +87,7 @@ public final class TaskList implements Runnable {
         String[] subcommandRest = commandLine.split(" ", 2);
         String subcommand = subcommandRest[0];
         if (subcommand.equals("project")) {
+            
             addProject(subcommandRest[1]);
         } else if (subcommand.equals("task")) {
             String[] projectTask = subcommandRest[1].split(" ", 2);
@@ -92,8 +95,9 @@ public final class TaskList implements Runnable {
         }
     }
 
-    private void addProject(String name) {
-        tasks.put(name, new ArrayList<Task>());
+    private void addProject(Project project) {
+        projects.add(project);
+        //tasks.put(name, new ArrayList<Task>());
     }
 
     private void addTask(String project, String description) {
