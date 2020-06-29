@@ -16,6 +16,10 @@ public class Project {
 
     }
 
+    public Project() {
+
+    }
+
     public String getName() {
         return name;
     }

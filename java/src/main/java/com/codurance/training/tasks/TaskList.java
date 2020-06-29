@@ -12,6 +12,9 @@ import java.util.Map;
 public final class TaskList implements Runnable {
     private static final String QUIT = "quit";
 
+    Project project = new Project();
+
+
     private final Map<String, List<Task>> tasks = new LinkedHashMap<>();
     private final ArrayList<Project> projects = new ArrayList<Project>();
 
@@ -85,11 +88,11 @@ public final class TaskList implements Runnable {
 
     private void add(String commandLine) {
         String[] subcommandRest = commandLine.split(" ", 2);
-        Project project = new Project(subcommandRest[1]);
 
         String subcommand = subcommandRest[0];
         if (subcommand.equals("project")) {
             System.out.println(subcommandRest[1]);
+            project.setName(subcommandRest[1]);
             addProject(project);
             //addProject(subcommandRest[1]);
         } else if (subcommand.equals("task")) {
