@@ -1,5 +1,7 @@
 package com.codurance.training.tasks;
 
+import com.codurance.training.tasks.action.Show;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,8 +14,8 @@ import java.util.Map;
 public final class TaskList implements Runnable {
     private static final String QUIT = "quit";
 
-    Project project = new Project();
-
+    private Project project = new Project();
+    private Show show = new Show();
 
     private final Map<String, List<Task>> tasks = new LinkedHashMap<>();
     private final ArrayList<Project> projects = new ArrayList<Project>();
@@ -54,7 +56,7 @@ public final class TaskList implements Runnable {
         String command = commandRest[0];
         switch (command) {
             case "show":
-                show();
+                show.show(projects);
                 break;
             case "add":
                 add(commandRest[1]);
@@ -74,15 +76,7 @@ public final class TaskList implements Runnable {
         }
     }
 
-    private void show() {
-        for (Project project : projects) {
-            out.println(project.getName());
-            for (Task task : project.getTasks()) {
-                out.printf("    [%c] %d: %s%n", (task.isDone() ? 'x' : ' '), task.getId(), task.getDescription());
-            }
-            out.println();
-        }
-    }
+
 
     private void add(String commandLine) {
         String[] subcommandRest = commandLine.split(" ", 2);
