@@ -86,12 +86,9 @@ public final class TaskList implements Runnable {
             String[] projectTask = subcommandRest[1].split(" ", 2);
 
             for (Project project : projects) {
-                System.out.println(projectTask[0]);
                 if (project.getName().equals(projectTask[0])) {
-
                     project.addTask(projectTask[1]);
-                    System.out.println(project.getName());
-                } 
+                }
             }
         }
     }
