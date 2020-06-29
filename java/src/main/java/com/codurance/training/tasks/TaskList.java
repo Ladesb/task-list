@@ -85,15 +85,17 @@ public final class TaskList implements Runnable {
 
     private void add(String commandLine) {
         String[] subcommandRest = commandLine.split(" ", 2);
+        Project project = new Project(subcommandRest[1]);
+
         String subcommand = subcommandRest[0];
         if (subcommand.equals("project")) {
             System.out.println(subcommandRest[1]);
-            Project project = new Project(subcommandRest[1]);
             addProject(project);
             //addProject(subcommandRest[1]);
         } else if (subcommand.equals("task")) {
+            System.out.println(subcommandRest[1]);
             String[] projectTask = subcommandRest[1].split(" ", 2);
-            addTask(projectTask[0], projectTask[1]);
+            addTask(project, projectTask[1]);
         }
     }
 
@@ -106,8 +108,8 @@ public final class TaskList implements Runnable {
 
         List<Task> projectTasks = project.getTasks();
 
-        if (projectTasks == null) {
-            out.printf("Could not find a project with the name \"%s\".", project);
+        if (!projects.contains(project)) {
+            out.printf("Could not find a project with the name \"%s\".", project.getName());
             out.println();
             return;
         }
