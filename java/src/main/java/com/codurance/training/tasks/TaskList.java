@@ -75,7 +75,7 @@ public final class TaskList implements Runnable {
                 break;
         }
     }
-    
+
     private void add(String commandLine) {
         String[] subcommandRest = commandLine.split(" ", 2);
         String subcommand = subcommandRest[0];
@@ -84,7 +84,11 @@ public final class TaskList implements Runnable {
             addProject(project);
         } else if (subcommand.equals("task")) {
             String[] projectTask = subcommandRest[1].split(" ", 2);
-            project.addTask(projectTask[1]);
+            if (projects.contains(project)){
+                project.addTask(projectTask[1]);
+            }else{
+                out.println("Le projet " + project.getName() + " n'existe pas.");
+            }
         }
     }
 
