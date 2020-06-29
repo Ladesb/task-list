@@ -18,7 +18,7 @@ public final class TaskList implements Runnable {
     private Show show = new Show();
 
     private final Map<String, List<Task>> tasks = new LinkedHashMap<>();
-    private final ArrayList<Project> projects = new ArrayList<Project>();
+    private final ArrayList<Project> projects = new ArrayList<>();
 
     private final BufferedReader in;
     private final PrintWriter out;
@@ -75,9 +75,7 @@ public final class TaskList implements Runnable {
                 break;
         }
     }
-
-
-
+    
     private void add(String commandLine) {
         String[] subcommandRest = commandLine.split(" ", 2);
         String subcommand = subcommandRest[0];
