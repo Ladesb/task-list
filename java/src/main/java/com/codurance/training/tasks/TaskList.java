@@ -21,8 +21,6 @@ public final class TaskList implements Runnable {
     private final BufferedReader in;
     private final PrintWriter out;
 
-    private long lastId = 0;
-
     public static void main(String[] args) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         PrintWriter out = new PrintWriter(System.out);
@@ -102,7 +100,6 @@ public final class TaskList implements Runnable {
         projects.add(project);
     }
 
-
     private void check(String idString) {
         setDone(idString, true);
     }
@@ -140,7 +137,4 @@ public final class TaskList implements Runnable {
         out.println();
     }
 
-    private long nextId() {
-        return ++lastId;
-    }
 }
