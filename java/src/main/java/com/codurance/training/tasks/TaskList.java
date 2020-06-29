@@ -80,15 +80,18 @@ public final class TaskList implements Runnable {
         String[] subcommandRest = commandLine.split(" ", 2);
         String subcommand = subcommandRest[0];
         if (subcommand.equals("project")) {
-            project.setName(subcommandRest[1]);
-            addProject(project);
+
+            addProject(new Project(subcommandRest[1]));
         } else if (subcommand.equals("task")) {
             String[] projectTask = subcommandRest[1].split(" ", 2);
-            if (projects.contains(project)){
-                project.addTask(projectTask[1]);
-                System.out.println(project.getName());
-            }else{
-                out.println("Le projet " + project.getName() + " n'existe pas.");
+
+            for (Project project : projects) {
+                System.out.println(projectTask[0]);
+                if (project.getName().equals(projectTask[0])) {
+
+                    project.addTask(projectTask[1]);
+                    System.out.println(project.getName());
+                } 
             }
         }
     }
