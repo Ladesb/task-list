@@ -102,8 +102,10 @@ public final class TaskList implements Runnable {
         //tasks.put(name, new ArrayList<Task>());
     }
 
-    private void addTask(String project, String description) {
-        List<Task> projectTasks = tasks.get(project);
+    private void addTask(Project project, String description) {
+
+        List<Task> projectTasks = project.getTasks();
+
         if (projectTasks == null) {
             out.printf("Could not find a project with the name \"%s\".", project);
             out.println();

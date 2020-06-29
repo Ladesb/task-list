@@ -6,8 +6,14 @@ public class Project {
     private String name;
     private List<Task> tasks;
 
+    public Project(String name, List<Task> tasks) {
+        this.name = name;
+        this.tasks = tasks;
+    }
+
     public Project(String name) {
         this.name = name;
+
     }
 
     public String getName() {
