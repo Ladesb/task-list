@@ -43,9 +43,9 @@ public class Project {
 
     public void addTask(String description) {
 
-        List<Task> projectTasks = getTasks();
 
-        projectTasks.add(new Task(nextId(), description, false));
+        getTasks().add(new Task(nextId(), description, false));
+
     }
 
 
