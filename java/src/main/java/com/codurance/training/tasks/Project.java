@@ -1,10 +1,11 @@
 package com.codurance.training.tasks;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Project {
     private String name;
-    private List<Task> tasks;
+    private List<Task> tasks = new ArrayList<>();
 
     public Project(String name, List<Task> tasks) {
         this.name = name;
@@ -34,5 +35,16 @@ public class Project {
 
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
+    }
+    private long nextId() {
+        return ++lastId;
+    }
+    private long lastId = 0;
+
+    public void addTask(String description) {
+
+        List<Task> projectTasks = getTasks();
+
+        projectTasks.add(new Task(nextId(), description, false));
     }
 }
